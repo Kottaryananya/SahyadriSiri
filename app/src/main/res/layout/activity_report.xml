@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Water Clarity"
+                    android:text="Water Clarity (0: Dirty, 10: Crystal Clear)"
                     android:textStyle="bold" />
 
                 <SeekBar
@@ -45,13 +45,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:max="5" />
+                    android:max="10"
+                    android:progress="5" />
 
                 <TextView
                     android:id="@+id/txtClarityValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clarity: 0"
+                    android:text="Clarity: 5"
                     android:textColor="#757575" />
 
                 <View

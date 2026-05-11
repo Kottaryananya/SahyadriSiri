@@ -41,7 +41,6 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
-import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 import com.google.maps.android.heatmaps.Gradient
@@ -52,24 +51,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.util.Locale
-
-// Data Models
-data class WaterReport(
-    val latitude: Double = 0.0,
-    val longitude: Double = 0.0,
-    val score: Int = 0,
-    val clarity: Int = 0,
-    val flow: String = "",
-    val pollution: Boolean = false,
-    val smell: String = ""
-)
-
-class WaterReportItem(val report: WaterReport) : ClusterItem {
-    override fun getPosition(): LatLng = LatLng(report.latitude, report.longitude)
-    override fun getTitle(): String? = null
-    override fun getSnippet(): String? = null
-    override fun getZIndex(): Float? = null
-}
 
 // ViewModel to handle data logic
 class ReportsViewModel : ViewModel() {
@@ -130,7 +111,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         try {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+            // Persistence enabled using specific database URL
+            FirebaseDatabase.getInstance("https://sahyadrisiri-494604-default-rtdb.asia-southeast1.firebasedatabase.app/").setPersistenceEnabled(true)
         } catch (_: Exception) { }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -260,11 +242,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val pollution = data?.getBooleanExtra("pollution", false) ?: false
         val smell = data?.getStringExtra("smell") ?: "Unknown"
 
-        // Normalized clarity (assuming seekbar 0-10 or 0-100)
-        val normalizedClarity = if (clarityRaw > 10) (clarityRaw / 10).coerceAtMost(5) else (clarityRaw / 2).coerceAtMost(5)
-        val score = (normalizedClarity * 2 + (if (flow == "High") 2 else 0) - (if (pollution) 2 else 0) - (if (smell == "Bad") 2 else 0)).coerceIn(0, 10)
+        // Revised score calculation: Clarity (0-10) is the base.
+        // High flow adds 1 point.
+        // Bad smell subtracts 2 points.
+        // Visible pollution subtracts 3 points.
+        var score = clarityRaw
+        if (flow == "High") score += 1
+        if (smell == "Bad") score -= 2
+        if (pollution) score -= 3
+        
+        val finalScore = score.coerceIn(0, 10)
 
-        if (score < 4) Toast.makeText(this, R.string.water_unsafe, Toast.LENGTH_LONG).show()
+        if (finalScore < 4) Toast.makeText(this, R.string.water_unsafe, Toast.LENGTH_LONG).show()
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
@@ -275,7 +264,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     return@addOnSuccessListener
                 }
 
-                viewModel.saveReport(WaterReport(latLng.latitude, latLng.longitude, score, clarityRaw, flow, pollution, smell))
+                viewModel.saveReport(WaterReport(latLng.latitude, latLng.longitude, finalScore, clarityRaw, flow, pollution, smell))
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
             }
         }
