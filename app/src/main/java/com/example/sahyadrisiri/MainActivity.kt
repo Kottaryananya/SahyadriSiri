@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
+import androidx.core.graphics.toColorInt
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
@@ -315,7 +316,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             .weightedData(data)
             .radius(50)
             .gradient(Gradient(
-                intArrayOf(Color.parseColor("#2196F3"), Color.YELLOW, Color.parseColor("#8B4513")), // Blue to Brown
+                intArrayOf("#2196F3".toColorInt(), Color.YELLOW, "#8B4513".toColorInt()), // Blue to Brown
                 floatArrayOf(0.1f, 0.5f, 1.0f)
             ))
             .build()
@@ -330,9 +331,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         clusterManager.renderer = object : DefaultClusterRenderer<WaterReportItem>(this, mMap, clusterManager) {
             override fun onBeforeClusterItemRendered(item: WaterReportItem, markerOptions: MarkerOptions) {
                 val color = when {
-                    item.report.score >= 7 -> Color.parseColor("#2196F3") // Healthy Blue
+                    item.report.score >= 7 -> "#2196F3".toColorInt() // Healthy Blue
                     item.report.score >= 4 -> Color.YELLOW // Warning Yellow
-                    else -> Color.parseColor("#8B4513") // Unsafe Brown
+                    else -> "#8B4513".toColorInt() // Unsafe Brown
                 }
                 val icon = getBitmapDescriptor(this@MainActivity, R.drawable.ic_water_drop, color, item.report.score)
                 if (icon != null) markerOptions.icon(icon)
