@@ -2,10 +2,6 @@
 
 **SahyadriSiri** is a dedicated Android application designed for monitoring and reporting water quality in the **Sahyadri (Western Ghats)** region. This community-driven platform empowers locals and travelers to contribute real-time data about water bodies, helping to preserve one of India's most vital ecosystems.
 
-## 🚀 Live Demo & Download
-- **Live Landing Page:** [https://Kottaryananya.github.io/SahyadriSiri/](https://Kottaryananya.github.io/SahyadriSiri/)
-- **Download Latest APK:** [Latest Release](https://github.com/Kottaryananya/SahyadriSiri/releases/latest)
-
 ## ✨ Features
 - 📍 **Interactive Map:** Explore water health data across the Western Ghats using Google Maps.
 - 📊 **Community Reporting:** Easily submit reports on water clarity, flow speed, smell, and pollution levels.
