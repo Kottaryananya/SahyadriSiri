@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SahyadriSiri</string>
+    <string name="report_water">Report Water</string>
+    <string name="wiki">Wiki</string>
+    <string name="alerts">Alerts</string>
+    <string name="water_unsafe">⚠️ Water unsafe at this location</string>
+    <string name="location_permission_required">Location permission is required to show your position</string>
+    <string name="style_error">Style error: %1$s</string>
+    <string name="firebase_error">Firebase error: %1$s</string>
+
+    <!-- Marker Details -->
+    <string name="marker_details_format">Clarity: %1$d\nFlow: %2$s\nSmell: %3$s\nPollution: %4$s</string>
+    <string name="score_format">Score: %1$d</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Legend -->
+    <string name="legend_title">Stream Health</string>
+    <string name="legend_healthy">Healthy</string>
+    <string name="legend_warning">Warning</string>
+    <string name="legend_unsafe">Unsafe</string>
+</resources>

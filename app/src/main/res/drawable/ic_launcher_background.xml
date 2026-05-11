@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="0"
+                android:startX="0"
+                android:endY="108"
+                android:endX="108"
+                android:type="linear">
+                <item android:offset="0" android:color="#1B5E20" /> <!-- Dark Green -->
+                <item android:offset="1" android:color="#4CAF50" /> <!-- Material Green -->
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Stylized mountain contour in the background -->
+    <path
+        android:fillColor="#10FFFFFF"
+        android:pathData="M0,108L0,80L30,60L60,90L90,50L108,70L108,108Z" />
+</vector>

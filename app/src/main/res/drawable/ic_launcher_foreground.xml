@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Main Water Drop - Using the "Healthy Blue" from the app's pointers -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M54,20C54,20 30,45.88 30,62.88C30,76.36 40.72,87.28 54,87.28C67.28,87.28 78,76.36 78,62.88C78,45.88 54,20 54,20Z" />
+
+    <!-- Stylized Leaf inside the drop (The 'Siri' or Wealth of Sahyadri) -->
+    <path
+        android:fillColor="#81C784"
+        android:pathData="M54,75C54,75 44,65 44,58C44,53 48,50 54,45C60,50 64,53 64,58C64,65 54,75 54,75Z" />
+
+    <!-- Reflection glisten on the drop -->
+    <path
+        android:fillColor="#40FFFFFF"
+        android:pathData="M42,55C42,55 40,60 40,63C40,68 43,72 43,72L45,70C45,70 43,67 43,63C43,61 44,57 44,57L42,55Z" />
+</vector>
