@@ -1,42 +1,210 @@
-# SahyadriSiri 🌊
+# 🌿 Sahyadri-Siri
 
-**SahyadriSiri** is a dedicated Android application designed for monitoring and reporting water quality in the **Sahyadri (Western Ghats)** region. This community-driven platform empowers locals and travelers to contribute real-time data about water bodies, helping to preserve one of India's most vital ecosystems.
+## Community-Driven Water Quality Monitoring System for the Sahyadri Region
 
-## ✨ Features
-- 📍 **Interactive Map:** Explore water health data across the Western Ghats using Google Maps.
-- 📊 **Community Reporting:** Easily submit reports on water clarity, flow speed, smell, and pollution levels.
-- 🔥 **Water Health Heatmaps:** Visualize quality trends and pollution hotspots with dynamic heatmaps.
-- 📦 **Smart Clustering:** High-density report areas are neatly clustered for better map readability.
-- 📚 **Water Wiki:** Access educational content about local water conservation and the importance of the Sahyadri ecosystem.
-- 🚨 **Real-time Alerts:** Stay informed about water safety and local alerts.
+Sahyadri-Siri is an Android application designed for community-driven water quality monitoring in the Sahyadri (Western Ghats) region of India. The application enables local communities, farmers, trekkers, and environmental volunteers to report and visualize water quality conditions in realtime using an interactive map-based platform.
 
-## 🛠️ Tech Stack
-- **Language:** Kotlin
-- **UI Framework:** XML Layouts & Material Design 3
-- **Database:** Firebase Realtime Database
-- **Maps API:** Google Maps SDK & Utility Library (Heatmaps/Clustering)
-- **Location:** Google Play Services Location
-- **CI/CD:** GitHub Actions (Auto-build & Release)
-
-## 🛠️ Installation for Developers
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Kottaryananya/SahyadriSiri.git
-   ```
-2. Open the project in **Android Studio (Ladybug or newer)**.
-3. Create a `local.properties` file in the root directory and add your Google Maps API Key:
-   ```properties
-   MAPS_API_KEY=YOUR_API_KEY_HERE
-   ```
-4. Sync the project with Gradle files.
-5. Build and run on your device or emulator.
-
-## 🛡️ Privacy & Security
-- **API Security:** All API keys are managed via the Secrets Gradle Plugin and are never exposed in the source code.
-- **Permissions:** The app requires `ACCESS_FINE_LOCATION` to accurately pin reports to the map.
-
-## 🤝 Contributing
-Contributions are welcome! If you'd like to improve SahyadriSiri, please fork the repo and create a pull request.
+The project focuses on environmental awareness, pollution detection, and community participation by transforming users into active contributors for monitoring natural water resources.
 
 ---
-Developed with ❤️ for the Sahyadri region by [Kottaryananya](https://github.com/Kottaryananya).
+
+# 📌 Problem Statement
+
+The Western Ghats are one of the major water sources in Peninsular India, yet many streams and local water bodies remain unmonitored at the grassroots level. Traditional monitoring systems are often expensive, centralized, and unable to provide realtime localized updates.
+
+Sahyadri-Siri addresses this challenge by providing a crowdsourced and geofenced water quality monitoring system where users can report water conditions and visualize water health across the Sahyadri region.
+
+---
+
+# ✨ Key Features
+
+* 🗺️ Interactive Google Maps Integration
+* 📍 GPS-Based Water Quality Reporting
+* 🌊 Water Health Score Calculation (0–10)
+* 🔥 Health Map / Heatmap Visualization
+* 📊 Marker Clustering for Better Visualization
+* 🚨 Unsafe Water Alerts System
+* 🔍 Stream Filtering and Search Functionality
+* 🧭 Google Maps Navigation Support
+* ☁️ Firebase Realtime Database Integration
+* 📶 Offline-Capable Data Handling
+* 🌿 Sahyadri Region Geofencing
+* 📚 Educational Sahyadri Wiki Section
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend & Development
+
+* Kotlin
+* Android Studio
+* Material Design 3
+* MVVM Architecture
+* Kotlin Coroutines & StateFlow
+
+## Backend & Cloud
+
+* Firebase Realtime Database
+* Firebase Local Persistence
+
+## Maps & Geolocation
+
+* Google Maps SDK
+* Google Play Services Location
+* Android Maps Utility Library
+
+## Tools & Platforms
+
+* GitHub
+* Gradle (Kotlin DSL)
+* Google AI Studio
+* Google Cloud
+* Google Developers Resources
+
+---
+
+# 🧠 Water Health Score Logic
+
+The application calculates a Water Health Score based on:
+
+* Water Clarity
+* Flow Condition
+* Smell Condition
+* Visible Pollution
+
+### Scoring Logic
+
+```plaintext
+Health Score = (Clarity × 2) + Flow Score − Pollution Penalty − Smell Penalty
+```
+
+### Health Status Mapping
+
+| Score Range | Status  |
+| ----------- | ------- |
+| 7 – 10      | Healthy |
+| 4 – 6       | Warning |
+| 0 – 3       | Unsafe  |
+
+---
+
+# 📱 Application Screenshots
+
+## Sahyadri-Siri Application Screens
+
+<img width="1280" height="720" alt="SahyadriSiri" src="https://github.com/user-attachments/assets/d5e90220-0ef8-4d12-92ba-b28041273310" />
+
+
+---
+
+# 📂 Project Structure
+
+```plaintext
+SahyadriSiri/
+│
+├── app/
+├── gradle/
+├── screenshots/
+├── docs/
+├── build.gradle.kts
+├── settings.gradle.kts
+├── README.md
+└── google-services.json (excluded from public repo)
+```
+
+---
+
+# ⚙️ Setup & Installation
+
+## Prerequisites
+
+* Android Studio
+* Android SDK
+* Google Maps API Key
+* Firebase Project Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Kottaryananya/SahyadriSiri.git
+```
+
+## Open Project
+
+1. Open Android Studio
+2. Select "Open Existing Project"
+3. Choose the cloned repository folder
+
+## Configure API Key
+
+Create a `local.properties` file and add:
+
+```properties
+MAPS_API_KEY=YOUR_API_KEY
+```
+
+## Firebase Setup
+
+1. Create a Firebase project
+2. Enable Firebase Realtime Database
+3. Add your `google-services.json` file inside:
+
+```plaintext
+app/google-services.json
+```
+
+## Run the Application
+
+```bash
+Build → Run App
+```
+
+---
+
+# 🚀 APK / Release
+
+## GitHub Release
+
+APK Download:
+
+[https://github.com/Kottaryananya/SahyadriSiri/releases/tag/v1.0](https://github.com/Kottaryananya/SahyadriSiri/releases/tag/v1.0)
+
+---
+
+# 🎯 Future Improvements
+
+* AI-Based Pollution Prediction
+* IoT Sensor Integration
+* User Authentication System
+* Advanced Analytics Dashboard
+* Multi-Language Support
+* Government Data Integration
+
+---
+
+# 📖 Internship Context
+
+This project was developed as part of the Android App Development using GenAI Internship at MindMatrix.
+
+The internship involved:
+
+* Android development training
+* Generative AI tool exposure
+* Practice application development
+* Independent project implementation
+* Documentation and deployment activities
+
+---
+
+# 👩‍💻 Developer
+
+**Ananya Kottary**
+Android App Development using GenAI Intern
+Canara Engineering College
+
+---
+
+# 📜 License
+
+This project is developed for educational and internship purposes.
